@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:todo_app/util/app_colors.dart';
 
 class ToDoTile extends StatelessWidget {
   final String taskName;
@@ -13,8 +14,8 @@ class ToDoTile extends StatelessWidget {
     required this.taskName,
     required this.isCompleted,
     required this.onChanged,
-    required this.deleteFunction
-    });
+    required this.deleteFunction,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +28,24 @@ class ToDoTile extends StatelessWidget {
             SlidableAction(
               onPressed: deleteFunction,
               icon: Icons.delete,
-              backgroundColor: Colors.red,
+              backgroundColor: AppColors.deleteTask,
               borderRadius: BorderRadius.circular(10),
-              label: 'Delete',)
-          ]
+              label: 'Delete',
+            ),
+          ],
         ),
         child: Container(
-          padding: EdgeInsets.all(20.0),
+          padding: EdgeInsets.all(10.0),
           decoration: BoxDecoration(
-            color: Colors.brown,
-            borderRadius: BorderRadius.circular(10),
+            color: AppColors.taskCard,
+            borderRadius: BorderRadius.circular(14),
+            boxShadow: [
+              BoxShadow(
+                color: AppColors.shadow,
+                blurRadius: 10,
+                offset: Offset(0, 4),
+              ),
+            ],
           ),
           child: Row(
             children: [
@@ -44,22 +53,25 @@ class ToDoTile extends StatelessWidget {
               Checkbox(
                 value: isCompleted,
                 onChanged: onChanged,
-                activeColor: Colors.green,
+                activeColor: AppColors.primary,
                 checkColor: Colors.white,
-                side: BorderSide(
-                  color: Colors.white,
-                  width: 1.5,
-                ),
+                side: BorderSide(color: AppColors.primary, width: 1.5),
               ),
-              
+
               // Text
-              Text(
-                taskName,
-                style: GoogleFonts.merriweather(
-                  decoration: isCompleted ? TextDecoration.lineThrough : null,
-                  decorationThickness: 2,
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600
+              Expanded(
+                child: Text(
+                  taskName,
+                  style: GoogleFonts.merriweather(
+                    color: isCompleted
+                        ? AppColors.completedTask
+                        : AppColors.text,
+                    decoration: isCompleted ? TextDecoration.lineThrough : null,
+                    decorationColor: AppColors.completedTask,
+                    decorationThickness: 2,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
             ],
