@@ -20,9 +20,14 @@ The application provides basic task management features such as creating, updati
 
 ## Screenshots
 
-![Home Screen](screenshots/home.png)
-![Add Task](screenshots/add_task.png)
-![Delete Task](screenshots/delete_task.png)
+<p align="center">
+  <img src="screenshots/home.png" alt="Home Screen" width="250"/>
+  <img src="screenshots/add_task.png" alt="Add Task" width="250"/>
+  <img src="screenshots/delete_task.png" alt="Delete Task" width="250"/>
+</p>
+<p align = "center">
+  <img src="screenshots/app_demo.gif" alt="App Demo" width="250"/>
+</p>
 
 ## Installation
 
